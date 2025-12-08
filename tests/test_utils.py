@@ -37,12 +37,12 @@ def test_create_objects_from_json_success(create_sample_json_data: dict) -> None
         cat1.description
         == "Смартфоны, как средство не только коммуникации, но и получение дополнительных функций для удобства жизни"
     )
-    assert len(cat1.products) == 2
-    assert isinstance(cat1.products[0], Product)
-    assert cat1.products[0].name == "Samsung Galaxy C23 Ultra"
-    assert cat1.products[1].name == "Iphone 15"
+    assert cat1.products_count == 2
+    assert isinstance(cat1.product_obj[0], Product)
+    assert cat1.product_obj[0].name == "Samsung Galaxy C23 Ultra"
+    assert cat1.product_obj[1].name == "Iphone 15"
 
     cat2 = categories[1]
     assert cat2.name == "Телевизоры"
-    assert len(cat2.products) == 1
-    assert cat2.products[0].quantity == 7
+    assert cat2.products_count == 1
+    assert cat2.product_obj[0].quantity == 7

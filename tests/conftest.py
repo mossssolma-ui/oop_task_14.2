@@ -65,3 +65,9 @@ def create_sample_json_data() -> list[dict]:
             ],
         },
     ]
+
+
+@pytest.fixture(autouse=True)
+def reset_category_counters() -> None:
+    Category.category_count = 0
+    Category.product_count = 0
