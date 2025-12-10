@@ -71,14 +71,16 @@
 Name                       Stmts   Miss  Cover
 ----------------------------------------------
 src\__init__.py                0      0   100%
-src\categories.py             13      0   100%
-src\products.py               10      0   100%
+src\categories.py             25      0   100%
+src\products.py               35      0   100%
+src\utils.py                  18      0   100%
 tests\__init__.py              0      0   100%
-tests\conftest.py             12      0   100%
-tests\test_categories.py       9      0   100%
-tests\test_products.py         6      0   100%
+tests\conftest.py             22      0   100%
+tests\test_categories.py      53      0   100%
+tests\test_products.py        49      0   100%
+tests\test_utils.py           30      0   100%
 ----------------------------------------------
-TOTAL                         50      0   100%
+TOTAL                        232      0   100%
 ```
 ## 🔧 Используемые технологии
 + Python 3.12 — основной язык программирования
