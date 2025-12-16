@@ -22,6 +22,15 @@ class Category:
         Category.category_count += 1
         Category.product_count += len(self.__products)
 
+    def __str__(self) -> str:
+        """
+        Считает общее количество продуктов
+        и позволяет выводить строковое отображение в таком формате:
+        Название категории, количество продуктов: 200 шт.
+        """
+        total_count = sum(product.quantity for product in self.__products)
+        return f"{self.name}, количество продуктов: {total_count} шт."
+
     def add_product(self, product: Product) -> None:
         """Добавление продукта в категорию"""
         self.__products.append(product)
@@ -35,7 +44,7 @@ class Category:
         """
         prod_str = ""
         for product in self.__products:
-            prod_str += f"{product.name}, {product.price} руб. Остаток: {product.quantity} шт.\n"
+            prod_str += f"{str(product)}\n"
         return prod_str
 
     @property

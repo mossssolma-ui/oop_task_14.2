@@ -13,6 +13,20 @@ class Product:
         self.price = price
         self.quantity = quantity
 
+    def __str__(self) -> str:
+        """
+        Позволяет выводить строковое отображение в таком формате:
+        Название продукта, 80 руб. Остаток: 15 шт.
+        """
+        return f"{self.name}, {int(self.price)} руб. Остаток: {self.quantity} шт."
+
+    def __add__(self, other: Product) -> float:
+        """Складывает общую стоимость двух продуктов у объекта Product"""
+        if isinstance(other, Product):
+            return self.quantity * self.price + other.quantity * other.price
+        else:
+            raise TypeError("Складываем только объекты Product")
+
     @property
     def price(self) -> float:
         """Возвращает текущую цену продукта"""
