@@ -1,5 +1,6 @@
 import builtins
 
+import pytest
 from _pytest.capture import CaptureFixture
 from _pytest.monkeypatch import MonkeyPatch
 
@@ -79,3 +80,11 @@ def test_new_product_updates_existing_duplicate(monkeypatch: MonkeyPatch) -> Non
     assert result is existing
     assert result.quantity == 7
     assert result.price == 120000.0
+
+
+def test_product_add(test_product1: Product, test_product2: Product) -> None:
+    res = test_product1 + test_product2
+    expected = test_product1.quantity * test_product1.price + test_product2.quantity * test_product2.price
+    assert res == expected
+    with pytest.raises(TypeError):
+        res = test_product1 + 100  # type:ignore
