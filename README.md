@@ -19,6 +19,20 @@
 - `description` — описание категории
 - `products` — список объектов `Product`, относящихся к категории
 
+#### Smartphone (Смартфон) — дочерний класс Product
+Класс для товаров категории "Смартфоны" с расширенными атрибутами:
+- `efficiency` — производительность устройства
+- `model` — модель смартфона
+- `memory` — объем памяти в ГБ
+- `color` — цвет корпуса
+Особенность: метод `__add__` позволяет складывать только объекты Smartphone между собой, возвращая суммарное количество на складе.
+#### LawnGrass (Газонная трава) — дочерний класс Product
+Класс для товаров категории "Газонная трава" с атрибутами для садоводства:
+- `country` — страна-производитель
+- `germination_period` — срок прорастания
+- `color` — цвет травы
+Особенность: метод __add__ позволяет складывать только объекты LawnGrass между собой, возвращая суммарное количество на складе.
+
 ### Статистика
 Класс `Category` автоматически отслеживает глобальную статистику:
 - **Количество категорий** — общее число созданных категорий
@@ -36,10 +50,14 @@
 │ ├── init.py
 │ ├── product.py # Класс Product
 │ ├── category.py # Класс Category
+│ ├── lawngrass_products.py
+│ ├── smartphone_products.py
 │ └── utils.py # подтягиевает категории и продукты из json-файла
 ├── tests/
 │ ├── init.py
 │ ├── conftest.py # файл с фикстурами
+│ ├── test_lawngrass_products.py
+│ ├── test_smartphone_products.p
 │ ├── product.py.py # Тесты для класса Product
 │ └── category.py.py # Тесты для класса Category
 ├── data/
@@ -68,19 +86,25 @@
 ## 🧪 Тестирование
 ### Проект покрыт unit-тестами с использованием pytest:
 ```
-Name                       Stmts   Miss  Cover
-----------------------------------------------
-src\__init__.py                0      0   100%
-src\categories.py             25      0   100%
-src\products.py               35      0   100%
-src\utils.py                  18      0   100%
-tests\__init__.py              0      0   100%
-tests\conftest.py             22      0   100%
-tests\test_categories.py      53      0   100%
-tests\test_products.py        49      0   100%
-tests\test_utils.py           30      0   100%
-----------------------------------------------
-TOTAL                        232      0   100%
+Name                                Stmts   Miss  Cover
+-------------------------------------------------------
+src\__init__.py                         0      0   100%
+src\categ_iterator.py                  14      0   100%
+src\categories.py                      30      1    97%
+src\lawngrass_products.py              11      0   100%
+src\products.py                        41      0   100%
+src\smartphone_products.py             12      1    92%
+src\utils.py                           18      0   100%
+tests\__init__.py                       0      0   100%
+tests\conftest.py                      46      0   100%
+tests\test_categ_iterator.py           13      0   100%
+tests\test_categories.py               55      0   100%
+tests\test_lawngrass_products.py       16      0   100%
+tests\test_products.py                 57      0   100%
+tests\test_smartphone_products.py      17      0   100%
+tests\test_utils.py                    30      0   100%
+-------------------------------------------------------
+TOTAL                                 360      2    99%
 ```
 ## 🔧 Используемые технологии
 + Python 3.12 — основной язык программирования
