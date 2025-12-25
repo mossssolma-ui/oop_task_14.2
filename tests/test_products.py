@@ -88,3 +88,7 @@ def test_product_add(test_product1: Product, test_product2: Product) -> None:
     assert res == expected
     with pytest.raises(TypeError):
         res = test_product1 + 100  # type:ignore
+
+def test_product_empty() -> None:
+    with pytest.raises(ValueError, match="Товар с нулевым количеством не может быть добавлен"):
+        Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 0)
