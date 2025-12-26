@@ -48,7 +48,7 @@ def create_sample_json_data() -> list[dict]:
         {
             "name": "Смартфоны",
             "description": "Смартфоны, как средство не только коммуникации, "
-            "но и получение дополнительных функций для удобства жизни",
+                           "но и получение дополнительных функций для удобства жизни",
             "products": [
                 {
                     "name": "Samsung Galaxy C23 Ultra",
@@ -62,7 +62,7 @@ def create_sample_json_data() -> list[dict]:
         {
             "name": "Телевизоры",
             "description": "Современный телевизор, который позволяет наслаждаться "
-            "просмотром, станет вашим другом и помощником",
+                           "просмотром, станет вашим другом и помощником",
             "products": [
                 {"name": '55" QLED 4K', "description": "Фоновая подсветка", "price": 123000.0, "quantity": 7}
             ],
@@ -109,3 +109,12 @@ def products_lawngrass1() -> LawnGrass:
 @pytest.fixture
 def products_lawngrass2() -> LawnGrass:
     return LawnGrass("Газонная трава 2", "Выносливая трава", 450.0, 15, "США", "5 дней", "Темно-зеленый")
+
+
+@pytest.fixture
+def empty_category_products() -> Category:
+    return Category(
+        "Смартфоны",
+        "Смартфоны, как средство получения дополнительных функций для удобства жизни",
+        [],
+    )

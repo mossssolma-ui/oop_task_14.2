@@ -1,3 +1,5 @@
+from _pytest.capture import CaptureFixture
+
 from src.categories import Category
 from src.products import Product
 
@@ -82,3 +84,21 @@ def test_category_add_product() -> None:
 
 def test_categories_str(first_category: Product) -> None:
     assert str(first_category) == "Смартфоны, количество продуктов: 13 шт."
+
+
+def test_middle_price(first_category: Category, empty_category_products: Category) -> None:
+    assert first_category.middle_price() == 195000.0
+    assert empty_category_products.middle_price() == 0.0
+
+
+def test_middle_price_with_products():
+
+    product1 = Product("Товар 1", "Описание 1", 100.0, 10)
+    product2 = Product("Товар 2", "Описание 2", 200.0, 5)
+    product3 = Product("Товар 3", "Описание 3", 300.0, 15)
+
+    category = Category("Категория 1", "Описание категории", [product1, product2, product3])
+
+    result = category.middle_price()
+    expected = (100 + 200 + 300) / 3
+    assert result == expected

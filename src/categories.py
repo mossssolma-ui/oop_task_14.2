@@ -61,3 +61,11 @@ class Category:
     def product_obj(self) -> list[Product]:
         """Возвращает список объектов Product"""
         return self.__products
+
+    def middle_price(self) -> float:
+        """Подсчитывает средний ценник всех товаров."""
+        try:
+            res = round(sum([prod.price for prod in self.__products]) / len(self.__products), 2)
+            return res
+        except ZeroDivisionError:
+            return 0.0
